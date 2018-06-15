@@ -14,6 +14,7 @@ class testcase(unittest.TestCase):
     def setUp(self):
         self.browser = webdriver.Chrome()
         self.browser.implicitly_wait(30)
+        self.browser.maximize_window()
         self.browser.get("http://192.168.0.100:8090/zentaopms/www/index.html")
         print("start chandao_test_01")
 
@@ -100,7 +101,7 @@ class testcase(unittest.TestCase):
 
 #------------------关闭浏览器------------------------------
     def tearDown(self):
-		print("end test chandao OK!")
+        print("end test chandao OK!")
         self.browser.close()
 
 if __name__ == "__main__":
