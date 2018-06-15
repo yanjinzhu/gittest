@@ -12,14 +12,14 @@ import time, unittest
 class testcase(unittest.TestCase):
 
     def setUp(self):
-        a = webdriver.Chrome()
-        a.implicitly_wait(30)
-        a.get("http://192.168.0.100:8090/zentaopms/www/index.html")
+        self.browser = webdriver.Chrome()
+        self.browser.implicitly_wait(30)
+        self.browser.get("http://192.168.0.100:8090/zentaopms/www/index.html")
         print("start chandao_test_01")
 
 #----------------------------登录------------------------------
     def test01(self):
-        a = webdriver.Chrome()
+        a = self.browser
         try:
             a.find_element_by_id("account").send_keys("yanjinzhu")
             a.find_element_by_name("password").send_keys("123456")
@@ -99,9 +99,9 @@ class testcase(unittest.TestCase):
             print("search bug failed!")
 
 #------------------关闭浏览器------------------------------
-        def tearDown(self):
-            a.find_element_by_link_text(u"退出").click()
-            a.close()
+    def tearDown(self):
+		print("end test chandao OK!")
+        self.browser.close()
 
 if __name__ == "__main__":
     unittest.main()
